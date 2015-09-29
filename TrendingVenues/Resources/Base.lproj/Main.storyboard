@@ -21,6 +21,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EaJ-1b-3Ky">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Tz8-ve-SRr"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="kwo-Od-FP6"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -32,6 +36,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vzf-8C-Sb0"/>
+                    <connections>
+                        <outlet property="tableView" destination="EaJ-1b-3Ky" id="mzd-0k-bet"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="722" y="866"/>

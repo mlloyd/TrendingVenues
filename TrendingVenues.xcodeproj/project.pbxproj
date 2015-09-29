@@ -14,6 +14,8 @@
 		C16220BD1BBB00DB003D4F78 /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = C16220BC1BBB00DB003D4F78 /* LocationService.m */; settings = {ASSET_TAGS = (); }; };
 		C16220C01BBB018D003D4F78 /* AppAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = C16220BF1BBB018D003D4F78 /* AppAssembly.m */; settings = {ASSET_TAGS = (); }; };
 		C16220C41BBB03A2003D4F78 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = C16220C31BBB03A2003D4F78 /* Location.m */; settings = {ASSET_TAGS = (); }; };
+		C16220C91BBB1A2D003D4F78 /* VenueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C16220C71BBB1A2D003D4F78 /* VenueTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		C16220CA1BBB1A2D003D4F78 /* VenueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C16220C81BBB1A2D003D4F78 /* VenueTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		C1E745DF1BBAFBB500F17BE2 /* TrendingVenuesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E745DE1BBAFBB500F17BE2 /* TrendingVenuesTests.m */; };
 		C1E745EA1BBAFBB500F17BE2 /* TrendingVenuesUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E745E91BBAFBB500F17BE2 /* TrendingVenuesUITests.m */; };
 		C1E746061BBAFC4300F17BE2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E745F91BBAFC4300F17BE2 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
@@ -54,6 +56,9 @@
 		C16220BF1BBB018D003D4F78 /* AppAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppAssembly.m; sourceTree = "<group>"; };
 		C16220C21BBB03A2003D4F78 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		C16220C31BBB03A2003D4F78 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		C16220C61BBB1A2D003D4F78 /* VenueTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueTableViewCell.h; sourceTree = "<group>"; };
+		C16220C71BBB1A2D003D4F78 /* VenueTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueTableViewCell.m; sourceTree = "<group>"; };
+		C16220C81BBB1A2D003D4F78 /* VenueTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VenueTableViewCell.xib; sourceTree = "<group>"; };
 		C1E745C11BBAFBB500F17BE2 /* TrendingVenues.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrendingVenues.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1E745DA1BBAFBB500F17BE2 /* TrendingVenuesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrendingVenuesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1E745DE1BBAFBB500F17BE2 /* TrendingVenuesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrendingVenuesTests.m; sourceTree = "<group>"; };
@@ -152,6 +157,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C16220C51BBB1A0A003D4F78 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C16220C61BBB1A2D003D4F78 /* VenueTableViewCell.h */,
+				C16220C71BBB1A2D003D4F78 /* VenueTableViewCell.m */,
+				C16220C81BBB1A2D003D4F78 /* VenueTableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C1E745B81BBAFBB500F17BE2 = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +196,7 @@
 				C1E746051BBAFC4300F17BE2 /* Business Logic */,
 				C1E745FA1BBAFC4300F17BE2 /* Resources */,
 				C1E746021BBAFC4300F17BE2 /* View Controllers */,
+				C16220C51BBB1A0A003D4F78 /* Views */,
 			);
 			path = TrendingVenues;
 			sourceTree = "<group>";
@@ -353,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1E746091BBAFC4300F17BE2 /* Main.storyboard in Resources */,
+				C16220CA1BBB1A2D003D4F78 /* VenueTableViewCell.xib in Resources */,
 				C1E746071BBAFC4300F17BE2 /* Assets.xcassets in Resources */,
 				C1E746081BBAFC4300F17BE2 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -450,6 +467,7 @@
 				C16220C01BBB018D003D4F78 /* AppAssembly.m in Sources */,
 				C16220C41BBB03A2003D4F78 /* Location.m in Sources */,
 				C1E746061BBAFC4300F17BE2 /* AppDelegate.m in Sources */,
+				C16220C91BBB1A2D003D4F78 /* VenueTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
