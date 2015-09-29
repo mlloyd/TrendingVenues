@@ -1,0 +1,46 @@
+syntax: glob
+
+.DS_Store
+
+# Backup files left behind by the Emacs editor.
+*~
+
+# Lock files used by the Emacs editor.
+.\#*
+
+# Temporary files used by the vim editor.
+.*.swp
+
+# Temporary files used by TestMate
+._*
+
+# Mercurial backups.
+*.orig
+*.rej
+*.irb-history
+
+# build directories
+**/build/*
+build/*
+
+# XCode user data
+**.pbxuser
+**.mode?v?
+**.perspectivev?
+ReutersTV.xcodeproj/xcuserdata
+ReutersTV.xcodeproj/project.xcworkspace/xcuserdata
+ReutersTV.xcworkspace/xcuserdata
+Pods/Pods.xcodeproj/xcuserdata
+RTVUserLog.h
+RTVUserLoggingPreferences.h
+RTVSourceRevision.h
+plan
+Pods/BuildHeaders
+.idea*
+
+# Apple
+*.pem
+*.p12
+Support/Tools/KeyObfuscator/KeyObfuscator.xcodeproj/project.xcworkspace/xcuserdata/pedrogomes.xcuserdatad/UserInterfaceState.xcuserstate
+Support/Tools/KeyObfuscator/KeyObfuscator.xcodeproj/xcuserdata/pedrogomes.xcuserdatad/xcschemes/KeyObfuscator.xcscheme
+
