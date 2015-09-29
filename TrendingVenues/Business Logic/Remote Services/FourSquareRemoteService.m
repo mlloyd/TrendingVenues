@@ -6,8 +6,12 @@
 //  Copyright © 2015 mlloyd. All rights reserved.
 //
 
+#import <Mantle/MTLJSONAdapter.h>
+
 #import "FourSquareRemoteService.h"
 #import "Location.h"
+
+#import "Venue.h"
 
 NSString *const kFourSquareRemoteService_Endpoint     = @"https://api.foursquare.com/v2/venues/search";
 NSString *const kFourSquareRemoteService_ClientId     = @"2UHTQ3034YVMH3WYQZSWRYNQHNUPKO2CNARKHUC3YL230BT5";
@@ -61,20 +65,31 @@ NSString *const kUserProgramPreferencesKey_StoryIds = @"storyIds";
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request
                                                  completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                      
-                                                     
                                                      if(((NSHTTPURLResponse *)response).statusCode != 200) {
                                                          NSError *responseError = [NSError errorWithDomain:@"com.trendingvalues.remoteservice.venue" code:-100 userInfo:@{}];
-                                                         errorHandler(responseError);
+                                                        dispatch_sync(dispatch_get_main_queue(), ^(){ errorHandler(responseError); });
                                                      }
                                                      
                                                      NSError *responseProcessingError = nil;
                                                      NSDictionary *decodedResponseData = [NSJSONSerialization JSONObjectWithData:data
                                                                                                                          options:0
                                                                                                                            error:&responseProcessingError];
-                                                     NSLog(@"%@", decodedResponseData);
+//                                                     NSLog(@"%@", decodedResponseData);
+                                                     
+                                                     // Could build these out, into MTLModel objects.
+                                                     NSArray *venuesResponseData = decodedResponseData[@"response"][@"venues"];
+                                                     NSMutableArray *venues = [NSMutableArray array];
+                                                     
+                                                     NSError *parseError = nil;
+                                                     for (NSDictionary *venueDict in venuesResponseData) {
+                                                         Venue *decodedResponse = [MTLJSONAdapter modelOfClass:[Venue class]
+                                                                                            fromJSONDictionary:venueDict
+                                                                                                         error:&parseError];
+                                                         [venues addObject:decodedResponse];
+                                                     }                                                     
                                                      
                                                      dispatch_sync(dispatch_get_main_queue(), ^(){
-                                                         completionHandler(@[]);
+                                                         completionHandler(venues);
                                                      });
     }];
 

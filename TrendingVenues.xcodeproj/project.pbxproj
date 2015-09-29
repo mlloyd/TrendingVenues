@@ -16,6 +16,7 @@
 		C16220C41BBB03A2003D4F78 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = C16220C31BBB03A2003D4F78 /* Location.m */; settings = {ASSET_TAGS = (); }; };
 		C16220C91BBB1A2D003D4F78 /* VenueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C16220C71BBB1A2D003D4F78 /* VenueTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		C16220CA1BBB1A2D003D4F78 /* VenueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C16220C81BBB1A2D003D4F78 /* VenueTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		C16220CD1BBB1C57003D4F78 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = C16220CC1BBB1C57003D4F78 /* Venue.m */; settings = {ASSET_TAGS = (); }; };
 		C1E745DF1BBAFBB500F17BE2 /* TrendingVenuesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E745DE1BBAFBB500F17BE2 /* TrendingVenuesTests.m */; };
 		C1E745EA1BBAFBB500F17BE2 /* TrendingVenuesUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E745E91BBAFBB500F17BE2 /* TrendingVenuesUITests.m */; };
 		C1E746061BBAFC4300F17BE2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E745F91BBAFC4300F17BE2 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
@@ -59,6 +60,8 @@
 		C16220C61BBB1A2D003D4F78 /* VenueTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueTableViewCell.h; sourceTree = "<group>"; };
 		C16220C71BBB1A2D003D4F78 /* VenueTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueTableViewCell.m; sourceTree = "<group>"; };
 		C16220C81BBB1A2D003D4F78 /* VenueTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VenueTableViewCell.xib; sourceTree = "<group>"; };
+		C16220CB1BBB1C57003D4F78 /* Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
+		C16220CC1BBB1C57003D4F78 /* Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
 		C1E745C11BBAFBB500F17BE2 /* TrendingVenues.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrendingVenues.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1E745DA1BBAFBB500F17BE2 /* TrendingVenuesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrendingVenuesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1E745DE1BBAFBB500F17BE2 /* TrendingVenuesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrendingVenuesTests.m; sourceTree = "<group>"; };
@@ -153,6 +156,8 @@
 			children = (
 				C16220C21BBB03A2003D4F78 /* Location.h */,
 				C16220C31BBB03A2003D4F78 /* Location.m */,
+				C16220CB1BBB1C57003D4F78 /* Venue.h */,
+				C16220CC1BBB1C57003D4F78 /* Venue.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -462,6 +467,7 @@
 				C1E7460C1BBAFC4300F17BE2 /* ViewController.m in Sources */,
 				C16220BA1BBB00CA003D4F78 /* FourSquareService.m in Sources */,
 				C1E7460B1BBAFC4300F17BE2 /* main.m in Sources */,
+				C16220CD1BBB1C57003D4F78 /* Venue.m in Sources */,
 				C16220B91BBB00CA003D4F78 /* FourSquareRemoteService.m in Sources */,
 				C16220BD1BBB00DB003D4F78 /* LocationService.m in Sources */,
 				C16220C01BBB018D003D4F78 /* AppAssembly.m in Sources */,

@@ -11,6 +11,8 @@
 #import "ViewController.h"
 #import "VenueTableViewCell.h"
 
+#import "Venue.h"
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 @interface ViewController ()
@@ -55,6 +57,8 @@
     __weak typeof(self) weakSelf = self;
     [self.fourSquareService fetchTrendingVenuesAtCurrentLocationWithCompletionHandler:^(NSArray *venues) {
         [weakSelf.activityIndicatorView stopAnimating];
+        weakSelf.datasource = venues;
+        [weakSelf.tableView reloadData];
     }
                                                                          errorHandler:^(NSError *error) {
                                                                              [weakSelf.activityIndicatorView stopAnimating];
@@ -77,6 +81,8 @@
     VenueTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[VenueTableViewCell reuseIdentifier]
                                                                forIndexPath:indexPath];
     
+    Venue *venue = self.datasource[indexPath.row];
+    cell.textLabel.text = venue.name;
     return cell;
 }
 
