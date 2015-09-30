@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AppAssembly.h"
+#import "AppStyle.h"
 
 #import "ViewController.h"
 
@@ -29,6 +30,8 @@
 {
     // Override point for customization after application launch.
     self.appAssembly = [[AppAssembly alloc] init];
+    
+    [AppStyle applyAppStyle];
     
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     ViewController *rootViewController = (ViewController *)[navigationController topViewController];

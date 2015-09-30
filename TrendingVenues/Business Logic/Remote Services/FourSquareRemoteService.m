@@ -11,21 +11,18 @@
 #import "FourSquareRemoteService.h"
 #import "Location.h"
 
-#import "Venue.h"
+#import "APIVenue.h"
 
 NSString *const kFourSquareRemoteService_Endpoint     = @"https://api.foursquare.com/v2/venues/search";
 NSString *const kFourSquareRemoteService_ClientId     = @"2UHTQ3034YVMH3WYQZSWRYNQHNUPKO2CNARKHUC3YL230BT5";
 NSString *const kFourSquareRemoteService_ClientSecret = @"G4CPUIXFWMCRCG4GWUJWIDCOI1XGQWKDDAMNMFQHWQ2T040V";
-
-NSString *const kUserProgramPreferencesKey_Duration = @"duration";
-NSString *const kUserProgramPreferencesKey_Region   = @"region";
-NSString *const kUserProgramPreferencesKey_StoryIds = @"storyIds";
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 @interface FourSquareRemoteService ()
 
 @property (nonatomic) NSURLSession *session;
+@property (nonatomic) NSDateFormatter *dateFormatter;
 
 @end
 
@@ -39,6 +36,9 @@ NSString *const kUserProgramPreferencesKey_StoryIds = @"storyIds";
 {
     if (self = [super init]) {
         self.session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+        
+        self.dateFormatter = [[NSDateFormatter alloc] init];
+        [self.dateFormatter setDateFormat:@"yyyyMMDD"];
     }
     return self;
 }
@@ -51,12 +51,39 @@ NSString *const kUserProgramPreferencesKey_StoryIds = @"storyIds";
 {
     NSString *resource = [NSString stringWithFormat:@"%@?%@&%@&%@&%@",
                           kFourSquareRemoteService_Endpoint,
-                          [NSString stringWithFormat:@"ll=%@,%@", location.longitude, location.latitude],
+                          [NSString stringWithFormat:@"near=%@", @"London"],
                           [NSString stringWithFormat:@"client_id=%@", kFourSquareRemoteService_ClientId],
                           [NSString stringWithFormat:@"client_secret=%@", kFourSquareRemoteService_ClientSecret],
-                          [NSString stringWithFormat:@"v=%@", @"20150929"]];
+                          [NSString stringWithFormat:@"v=%@", [self.dateFormatter stringFromDate:[NSDate date]]]];
     
-    NSURL *serviceEndpoint = [NSURL URLWithString:resource];
+    [self buildRequestWithResource:resource completionHandler:completionHandler errorHandler:errorHandler];
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+- (void)fetchVenueNearLocationNamed:(NSString *)location
+                  completionHandler:(void (^)(NSArray *))completionHandler
+                       errorHandler:(void (^)(NSError *))errorHandler
+{
+    NSString *resource = [NSString stringWithFormat:@"%@?%@&%@&%@&%@",
+                          kFourSquareRemoteService_Endpoint,
+                          [NSString stringWithFormat:@"near=%@", location],
+                          [NSString stringWithFormat:@"client_id=%@", kFourSquareRemoteService_ClientId],
+                          [NSString stringWithFormat:@"client_secret=%@", kFourSquareRemoteService_ClientSecret],
+                          [NSString stringWithFormat:@"v=%@", [self.dateFormatter stringFromDate:[NSDate date]]]];
+    
+    [self buildRequestWithResource:resource completionHandler:completionHandler errorHandler:errorHandler];
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+- (void)buildRequestWithResource:(NSString *)resource
+               completionHandler:(void (^)(NSArray *))completionHandler
+                    errorHandler:(void (^)(NSError *))errorHandler
+{
+    NSString *encodedURL = [resource stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    
+    NSURL *serviceEndpoint = [NSURL URLWithString:encodedURL];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:serviceEndpoint
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                        timeoutInterval:60.0f];
@@ -65,24 +92,24 @@ NSString *const kUserProgramPreferencesKey_StoryIds = @"storyIds";
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request
                                                  completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                      
-                                                     if(((NSHTTPURLResponse *)response).statusCode != 200) {
+                                                     if(data == nil ||
+                                                        error!=nil ||
+                                                        ((NSHTTPURLResponse *)response).statusCode != 200) {
                                                          NSError *responseError = [NSError errorWithDomain:@"com.trendingvalues.remoteservice.venue" code:-100 userInfo:@{}];
-                                                        dispatch_sync(dispatch_get_main_queue(), ^(){ errorHandler(responseError); });
+                                                         dispatch_sync(dispatch_get_main_queue(), ^(){ errorHandler(responseError); });
                                                      }
                                                      
                                                      NSError *responseProcessingError = nil;
                                                      NSDictionary *decodedResponseData = [NSJSONSerialization JSONObjectWithData:data
                                                                                                                          options:0
                                                                                                                            error:&responseProcessingError];
-//                                                     NSLog(@"%@", decodedResponseData);
-                                                     
                                                      // Could build these out, into MTLModel objects.
                                                      NSArray *venuesResponseData = decodedResponseData[@"response"][@"venues"];
                                                      NSMutableArray *venues = [NSMutableArray array];
                                                      
                                                      NSError *parseError = nil;
                                                      for (NSDictionary *venueDict in venuesResponseData) {
-                                                         Venue *decodedResponse = [MTLJSONAdapter modelOfClass:[Venue class]
+                                                         APIVenue *decodedResponse = [MTLJSONAdapter modelOfClass:[APIVenue class]
                                                                                             fromJSONDictionary:venueDict
                                                                                                          error:&parseError];
                                                          [venues addObject:decodedResponse];
@@ -91,8 +118,8 @@ NSString *const kUserProgramPreferencesKey_StoryIds = @"storyIds";
                                                      dispatch_sync(dispatch_get_main_queue(), ^(){
                                                          completionHandler(venues);
                                                      });
-    }];
-
+                                                 }];
+    
     [task resume];
 }
 

@@ -14,6 +14,7 @@
 
 @property (nonatomic, copy) NSNumber *longitude;
 @property (nonatomic, copy) NSNumber *latitude;
+@property (nonatomic, copy) NSString *searchName;
 
 @end
 
@@ -23,6 +24,7 @@
 
 @property (nonatomic, copy) NSNumber *longitude;
 @property (nonatomic, copy) NSNumber *latitude;
+@property (nonatomic, copy) NSString *searchName;
 
 - (instancetype)initWithLongitude:(NSNumber *)longitude
                          latitude:(NSNumber *)latitude;

@@ -17,6 +17,10 @@
              completionHandler:(void (^)(NSArray *))completionHandler
                   errorHandler:(void (^)(NSError *))errorHandler;
 
+- (void)fetchVenueNearLocationNamed:(NSString *)location
+                  completionHandler:(void (^)(NSArray *))completionHandler
+                       errorHandler:(void (^)(NSError *))errorHandler;
+
 @end
 
 ////////////////////////////////////////////////////////////////////////////////

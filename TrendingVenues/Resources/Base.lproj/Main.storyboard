@@ -18,25 +18,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search for venues..." translatesAutoresizingMaskIntoConstraints="NO" id="KJ2-gm-rc7">
+                                <rect key="frame" x="0.0" y="44" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="erz-Ph-8Is"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="49B-4x-XgC"/>
+                                </connections>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EaJ-1b-3Ky">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="88" width="600" height="512"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="Tz8-ve-SRr"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="kwo-Od-FP6"/>
                                 </connections>
                             </tableView>
+                            <view userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42m-K2-OUA">
+                                <rect key="frame" x="0.0" y="88" width="600" height="512"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="KJ2-gm-rc7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="1IL-b6-G9i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KJ2-gm-rc7" secondAttribute="trailing" constant="-20" id="32V-HC-m8z"/>
+                            <constraint firstItem="42m-K2-OUA" firstAttribute="centerY" secondItem="EaJ-1b-3Ky" secondAttribute="centerY" id="5p6-B2-JUT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EaJ-1b-3Ky" secondAttribute="trailing" constant="-20" id="EWn-Ja-j6O"/>
+                            <constraint firstItem="KJ2-gm-rc7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="PUL-Ne-Vwc"/>
                             <constraint firstItem="EaJ-1b-3Ky" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="cem-wf-9N0"/>
-                            <constraint firstItem="EaJ-1b-3Ky" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="igk-xM-MXR"/>
+                            <constraint firstItem="EaJ-1b-3Ky" firstAttribute="top" secondItem="KJ2-gm-rc7" secondAttribute="bottom" id="cpx-k0-Lr0"/>
+                            <constraint firstItem="42m-K2-OUA" firstAttribute="centerX" secondItem="EaJ-1b-3Ky" secondAttribute="centerX" id="ofw-Ey-eXC"/>
+                            <constraint firstItem="42m-K2-OUA" firstAttribute="width" secondItem="EaJ-1b-3Ky" secondAttribute="width" id="oi0-SH-OuI"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EaJ-1b-3Ky" secondAttribute="bottom" id="oxB-Yc-Z9B"/>
+                            <constraint firstItem="42m-K2-OUA" firstAttribute="height" secondItem="EaJ-1b-3Ky" secondAttribute="height" id="u1P-LW-d5f"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vzf-8C-Sb0"/>
                     <connections>
+                        <outlet property="overlay" destination="42m-K2-OUA" id="Ump-K7-yJ1"/>
+                        <outlet property="searchBar" destination="KJ2-gm-rc7" id="jkL-Ck-jDf"/>
                         <outlet property="tableView" destination="EaJ-1b-3Ky" id="mzd-0k-bet"/>
                     </connections>
                 </viewController>
@@ -47,6 +70,7 @@
         <scene sceneID="DkP-ay-0sH">
             <objects>
                 <navigationController id="1Dw-Tv-Bra" sceneMemberID="viewController">
+                    <nil key="simulatedStatusBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Oh-uF-yOf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

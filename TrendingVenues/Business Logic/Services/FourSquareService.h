@@ -23,6 +23,10 @@ typedef void (^FourSquareServiceErrorHandler)(NSError *error);
                     completionHandler:(FourSquareServiceCompletionHandler)completionHandler
                          errorHandler:(FourSquareServiceErrorHandler)errorHandler;
 
+- (void)fetchTrendingVenuesAtLocationNamed:(NSString *)location
+                         completionHandler:(FourSquareServiceCompletionHandler)completionHandler
+                              errorHandler:(FourSquareServiceErrorHandler)errorHandler;
+
 @end
 
 ////////////////////////////////////////////////////////////////////////////////

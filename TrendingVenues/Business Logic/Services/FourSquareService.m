@@ -68,4 +68,15 @@
                                   errorHandler:errorHandler];
 }
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+- (void)fetchTrendingVenuesAtLocationNamed:(NSString *)location
+                         completionHandler:(FourSquareServiceCompletionHandler)completionHandler
+                              errorHandler:(FourSquareServiceErrorHandler)errorHandler
+{
+    [self.remoteService fetchVenueNearLocationNamed:location
+                                  completionHandler:completionHandler
+                                       errorHandler:errorHandler];
+}
+
 @end

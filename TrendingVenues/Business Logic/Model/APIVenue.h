@@ -1,5 +1,5 @@
 //
-//  Venue.h
+//  APIVenue.h
 //  TrendingVenues
 //
 //  Created by Martin Lloyd on 29/09/2015.
@@ -9,13 +9,18 @@
 #import <MTLModel.h>
 #import <MTLJSONAdapter.h>
 
+#import "APILocation.h"
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-@interface Venue : MTLModel <MTLJSONSerializing>
+@interface APIVenue : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *categories;
 @property (nonatomic, copy) NSString *verified;
 @property (nonatomic, copy) NSString *url;
+
+@property (nonatomic, copy) APILocation *location;
 
 @end
