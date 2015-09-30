@@ -15,8 +15,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 @interface FourSquareService ()
 
-@property (nonatomic) id<FourSquareRemoteService> remoteService;
-@property (nonatomic) id<LocationService        > locationService;
+@property (nonatomic, weak) id<FourSquareRemoteService> remoteService;
+@property (nonatomic, weak) id<LocationService        > locationService;
 
 @end
 
